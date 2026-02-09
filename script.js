@@ -39,20 +39,43 @@ function moveButton() {
 function acceptLove() {
     // 1. Trigger Confetti
     confetti({
-        particleCount: 150,
-        spread: 70,
+        particleCount: 300,
+        spread: 100,
         origin: { y: 0.6 },
-        colors: ['#FF7F50', '#ffffff', '#FF0000'] // Coral, White, Red
+        colors: ['#FF1493', '#FF69B4', '#FF4d4d', '#FFFFFF'], // Deep Pink, Hot Pink, Red, White
+        shapes: ['circle', 'square'] // Simplify shapes for better compatibility
     });
 
-    // 2. Change the screen content
+    // 2. Change the screen content with animation & VIDEO
     const proposalSection = document.getElementById("proposal");
     proposalSection.innerHTML = `
-        <h1 class="movie-title">SHE SAID YES! 🎬</h1>
-        <p>Production has begun on our best date ever.</p>
-        <p>See you on Feb 14th!</p>
-        <img src="assets/happy-us.jpg" style="max-width:300px; border-radius:15px; margin-top:20px;">
+        <div style="position: relative; width: 100%; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <video autoplay loop style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.8;">
+                <source src="assets/41.mp4" type="video/mp4">
+            </video>
+            
+            <div style="position: relative; z-index: 10; animation: fadeIn 2s ease; text-align: center; background: rgba(0,0,0,0.4); padding: 40px; border-radius: 20px;">
+                <h1 class="movie-title" style="font-size: 5rem; color: #ff4d4d; margin-bottom: 20px; text-shadow: 0 0 30px rgba(255,0,0,0.8); font-family: 'Great Vibes', cursive;">
+                    I LOVE YOU <br> SO MUCH BABY ❤️
+                </h1>
+                <p class="subtitle" style="font-size: 2.5rem; color: white;">Forever & Always.</p>
+            </div>
+        </div>
     `;
 
-    // Optional: Auto-play a song here if you want
+    // 3. Launch more confetti after a delay
+    setTimeout(() => {
+        confetti({
+            particleCount: 200,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 }
+        });
+        confetti({
+            particleCount: 200,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 }
+        });
+    }, 1000);
 }
