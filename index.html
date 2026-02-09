@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Film by Varshith</title> <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section id="hero" class="screen">
+        <div class="overlay"></div>
+        <div class="content">
+            <h2 class="studio-name">VARSHITH M GOWDA PRESENTS</h2>
+            <h1 class="movie-title">THE PERFECT <span class="highlight">DUO</span></h1>
+            <p class="tagline">Based on a true love story.</p>
+            <button onclick="scrollToSection('gallery')" class="btn-primary">Watch Trailer (Scroll Down)</button>
+        </div>
+    </section>
+
+    <section id="about" class="screen">
+        <div class="container">
+            <h2>Starring: The Leading Lady</h2>
+            <div class="profile-card">
+                <img src="assets/her-photo.jpg" alt="Her" class="profile-pic">
+                <div class="bio">
+                    <h3>Name Here</h3>
+                    <p>Critic Reviews: "The cutest smile in the industry." "A certified Cinephile."</p>
+                    <p>Special Skill: <span class="highlight">Gifting the best Coral Charms.</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="screen">
+        <h2>Our Best Scenes</h2>
+        <div class="film-strip">
+            <div class="frame"><img src="assets/photo1.jpg" alt="Memory 1"></div>
+            <div class="frame"><img src="assets/photo2.jpg" alt="Memory 2"></div>
+            <div class="frame"><img src="assets/photo3.jpg" alt="Memory 3"></div>
+        </div>
+    </section>
+
+    <section id="proposal" class="screen">
+        <h2>The Season Finale</h2>
+        <p>There is only one question left to answer...</p>
+        <h1 class="big-question">Will you be my Valentine?</h1>
+        
+        <div class="buttons">
+            <button id="yesBtn" onclick="acceptLove()">YES! 🎬</button>
+            <button id="noBtn" onmouseover="moveButton()">NO</button>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
