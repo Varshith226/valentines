@@ -1,5 +1,24 @@
 // script.js
 
+// Floating Hearts Logic for Memory Lane
+document.addEventListener('DOMContentLoaded', () => {
+    const heartsContainer = document.querySelector('.hearts-container');
+    if (heartsContainer) {
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-anim');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's'; // 3-6s
+            heart.style.fontSize = (Math.random() * 1 + 0.5) + 'rem';
+            heartsContainer.appendChild(heart);
+
+            // Cleanup
+            setTimeout(() => heart.remove(), 6000);
+        }, 800);
+    }
+});
+
 // Function to smooth scroll
 function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
@@ -10,7 +29,7 @@ function moveButton() {
     const noBtn = document.getElementById("noBtn");
     const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
     const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-    
+
     noBtn.style.position = "absolute";
     noBtn.style.left = `${x}px`;
     noBtn.style.top = `${y}px`;
@@ -34,6 +53,6 @@ function acceptLove() {
         <p>See you on Feb 14th!</p>
         <img src="assets/happy-us.jpg" style="max-width:300px; border-radius:15px; margin-top:20px;">
     `;
-    
+
     // Optional: Auto-play a song here if you want
 }

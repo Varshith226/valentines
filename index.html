@@ -1,63 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Film by Varshith</title> <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Our Love Story</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Premium Fonts: Playfair Display (Titles), Montserrat (Body), Dancing Script (Accents) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
+    <!-- Background Video -->
     <video autoplay muted loop id="bg-video">
         <source src="assets/31.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
+    <div class="video-overlay"></div>
+    <div class="hearts-container"></div> <!-- Global Floating Hearts -->
 
+    <!-- Hero Section -->
     <section id="hero" class="screen">
-        <div class="overlay"></div>
         <div class="content">
-            <h2 class="studio-name">VARSHITH M GOWDA PRESENTS</h2>
-            <h1 class="movie-title">THE PERFECT <span class="highlight">DUO</span></h1>
-            <p class="tagline">Based on a true love story.</p>
-            <button onclick="scrollToSection('gallery')" class="btn-primary">Watch Trailer (Scroll Down)</button>
+            <h2 class="studio-name">I LOVE YOU MANOGNYA</h2>
+            <h1 class="movie-title">THE PERFECT <span class="highlight">GIRLFRIEND</span></h1>
+            <p class="tagline">Every moment with you is a scene worth capturing.</p>
+            <p class="signature">Manognya & Varshith</p>
+            <button onclick="scrollToSection('chapters')" class="btn-primary">Start The Movie</button>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll down my PRINCESS</span>
+            <div class="arrow">↓</div>
         </div>
     </section>
 
-    <section id="about" class="screen">
-        <div class="container">
-            <h2>Starring: The Leading Lady</h2>
-            <div class="profile-card">
-                <img src="assets/1.jpeg" alt="Her" class="profile-pic">
-                <div class="bio">
-                    <h3>Name Here</h3>
-                    <p>Critic Reviews: "The cutest smile in the industry." "A certified Cinephile."</p>
-                    <p>Special Skill: <span class="highlight">Gifting the best Coral Charms.</span></p>
+    <!-- Chapters Section -->
+    <section id="chapters" class="screen">
+        <h2 class="section-title">The Chapters</h2>
+        <div class="chapter-container">
+            <!-- Chapter I -->
+            <div class="chapter-card flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-image" style="background-image: url('assets/13.jpeg');"></div>
+                        <div class="card-content">
+                            <h3>Chapter I</h3>
+                            <h4>The Meeting</h4>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>The Beginning</h3>
+                        <p>Where it all began with those glossy eyes that stole my heart instantly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter II -->
+            <div class="chapter-card flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-image" style="background-image: url('assets/38.jpeg');"></div>
+                        <div class="card-content">
+                            <h3>Chapter II</h3>
+                            <h4>First Coffee</h4>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Caffeine & Love</h3>
+                        <p>Endless conversations, nervous laughter, and the perfect brew.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter III -->
+            <div class="chapter-card flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-image" style="background-image: url('assets/19.jpeg');"></div>
+                        <div class="card-content">
+                            <h3>Chapter III</h3>
+                            <h4>The Journey</h4>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Adventures</h3>
+                        <p>Every trip, every stumble, every laugh has brought us closer.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter IV -->
+            <div class="chapter-card flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-image" style="background-image: url('assets/9.jpeg');"></div>
+                        <div class="card-content">
+                            <h3>Chapter IV</h3>
+                            <h4>Sunsets Together</h4>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Golden Hours</h3>
+                        <p>Watching the sun go down, knowing my world is right next to me.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter V (New) -->
+            <div class="chapter-card flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-image" style="background-image: url('assets/12.jpeg');"></div>
+                        <div class="card-content">
+                            <h3>Chapter V</h3>
+                            <h4>First Photobooth</h4>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Captured Moments</h3>
+                        <p>Silly faces, tight hugs, and a memory printed forever.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter VI (New) -->
+            <div class="chapter-card flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-image" style="background-image: url('assets/21.jpeg');"></div>
+                        <div class="card-content">
+                            <h3>Chapter VI</h3>
+                            <h4>First Car Date</h4>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Drive & Vibe</h3>
+                        <p>Just us, the road, and our favorite songs playing on loop.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="screen">
-        <h2>Our Best Scenes</h2>
-        <div class="film-strip">
-            <div class="frame"><img src="assets/2.jpeg" alt="Memory 1"></div>
-            <div class="frame"><img src="assets/3.jpeg" alt="Memory 2"></div>
-            <div class="frame"><img src="assets/4.jpeg" alt="Memory 3"></div>
+    <!-- SPANDAN Section (Redesigned) -->
+    <section id="spandan" class="screen">
+        <h2 class="section-title">SPANDAN</h2>
+        <p class="subtitle">The moment I knew.</p>
+        <div class="love-cloud-layout">
+            <!-- Satellites (Floating around) -->
+            <div class="love-satellite sat-1"><img src="assets/26.jpeg" loading="lazy"></div>
+            <div class="love-satellite sat-2"><img src="assets/28.jpeg" loading="lazy"></div>
+
+            <!-- Main Centerpiece -->
+            <div class="love-main">
+                <img src="assets/32.jpeg" alt="The realization day" class="main-heart-pic">
+                <p class="love-caption">The day I decided you should be my girlfriend.</p>
+            </div>
+
+            <!-- Satellites (Floating around) -->
+            <div class="love-satellite sat-3"><img src="assets/30.jpeg" loading="lazy"></div>
+            <div class="love-satellite sat-4"><img src="assets/39.jpeg" loading="lazy"></div>
         </div>
     </section>
 
+    <!-- PROPOSAL Section -->
+    <section id="proposal-day" class="screen">
+        <h2 class="section-title">27th January 2026</h2>
+        <p class="subtitle">The best YES of my life.</p>
+        <div class="polaroid-container">
+            <div class="polaroid-card rotate-left">
+                <div class="inner-polaroid">
+                    <img src="assets/3.jpeg" alt="Proposal 1">
+                    <p class="handwritten-date">She said YES!</p>
+                </div>
+            </div>
+            <div class="polaroid-card center-card">
+                <div class="inner-polaroid">
+                    <img src="assets/4.jpeg" alt="Proposal 2">
+                    <p class="handwritten-date">Best. Day. Ever.</p>
+                </div>
+            </div>
+            <div class="polaroid-card rotate-right">
+                <div class="inner-polaroid">
+                    <img src="assets/1.jpeg" alt="Proposal 3">
+                    <p class="handwritten-date">My Valentine Forever</p>
+                </div>
+            </div>
+            <!-- Added 40.jpeg -->
+            <div class="polaroid-card rotate-left-2">
+                <div class="inner-polaroid">
+                    <img src="assets/40.jpeg" alt="Proposal 4">
+                    <p class="handwritten-date">Just Us</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memory Wall (Gallery) -->
+    <section id="memory-wall" class="screen">
+        <h2 class="section-title">Memory Lane</h2>
+        <p class="subtitle">All the little moments that make us "US".</p>
+        <p class="subtitle">All the little moments that make us "US".</p>
+
+        <div class="masonry-grid">
+            <!-- Videos mixed in -->
+            <div class="grid-item video-item"><video autoplay muted loop>
+                    <source src="assets/34.mp4" type="video/mp4">
+                </video></div>
+            <div class="grid-item video-item"><video autoplay muted loop>
+                    <source src="assets/36.mp4" type="video/mp4">
+                </video></div>
+            <div class="grid-item video-item"><video autoplay muted loop>
+                    <source src="assets/37.mp4" type="video/mp4">
+                </video></div>
+
+            <!-- Images 1-10 -->
+            <div class="grid-item"><img src="assets/1.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/2.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/3.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/4.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/5.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/6.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/7.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/8.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/9.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/10.jpeg" loading="lazy"></div>
+
+            <!-- Images 11-20 (Excluding chapter covers if desired, but including here for fullness) -->
+            <div class="grid-item"><img src="assets/11.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/12.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/13.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/14.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/15.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/17.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/20.jpeg" loading="lazy"></div>
+
+            <!-- Images 21-30 -->
+            <div class="grid-item"><img src="assets/21.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/22.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/23.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/24.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/25.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/26.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/27.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/28.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/29.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/30.jpeg" loading="lazy"></div>
+
+            <!-- Remaining -->
+            <div class="grid-item"><img src="assets/32.jpeg" loading="lazy"></div>
+            <div class="grid-item"><img src="assets/33.jpeg" loading="lazy"></div>
+
+            <!-- Duplicate video to fill grid if needed -->
+            <div class="grid-item video-item"><video autoplay muted loop>
+                    <source src="assets/35.mp4" type="video/mp4">
+                </video></div>
+        </div>
+    </section>
+
+    <!-- Proposal / Final Section -->
     <section id="proposal" class="screen">
-        <h2>The Season Finale</h2>
-        <p>There is only one question left to answer...</p>
-        <h1 class="big-question">Will you be my Valentine?</h1>
-        
-        <div class="buttons">
-            <button id="yesBtn" onclick="acceptLove()">YES! 🎬</button>
-            <button id="noBtn" onmouseover="moveButton()">NO</button>
+        <div class="proposal-content">
+            <h2 class="cursive-title">The Grand Finale</h2>
+            <p>After all these chapters...</p>
+            <h1 class="big-question">Will you be my Valentine?</h1>
+
+            <div class="buttons">
+                <button id="yesBtn" onclick="acceptLove()">YES! <span class="heart">❤️</span></button>
+                <button id="noBtn" onmouseover="moveButton()">NO</button>
+            </div>
         </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,10 +1,19 @@
 /* style.css */
 :root {
-    --coral: #FF7F50;
-    --dark-bg: #121212;
-    --text-color: #f5f5f5;
-    --font-head: 'Bebas Neue', cursive;
+    --primary: #d4a373;
+    /* Warm Gold/Beige */
+    --accent: #bf3f3f;
+    /* Deep Romantic Red */
+    --dark-bg: #0a0a0a;
+    --text-color: #f0f0f0;
+    --font-title: 'Playfair Display', serif;
     --font-body: 'Montserrat', sans-serif;
+    --font-script: 'Dancing Script', cursive;
+    --card-bg: rgba(20, 20, 20, 0.85);
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -22,7 +31,9 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
 }
 
 /* BACKGROUND VIDEO */
@@ -34,91 +45,536 @@ body {
     min-height: 100%;
     width: auto;
     height: auto;
-    z-index: -1;
+    z-index: -2;
     transform: translate(-50%, -50%);
     object-fit: cover;
+    filter: brightness(0.6);
+    /* Slightly darker for better text readability */
+}
+
+/* GLOBAL TYPOGRAPHY */
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+.highlight {
+    color: var(--accent);
+    text-shadow: 0 0 15px rgba(191, 63, 63, 0.6);
+}
+
+.cursive-title {
+    font-family: var(--font-script);
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    color: #fff;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 10px;
+    display: inline-block;
 }
 
 /* HERO SECTION */
-#hero {
-    /* Background removed to show video */
-    position: relative;
-    background: transparent;
+#hero .content {
+    max-width: 800px;
 }
 
-.overlay {
+.studio-name {
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+h1.movie-title {
+    font-family: var(--font-title);
+    font-size: 6rem;
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: -2px;
+}
+
+.tagline {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.scroll-indicator {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Dark overlay so text pops */
+    bottom: 30px;
+    animation: bounce 2s infinite;
+    opacity: 0.7;
 }
 
-.content {
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* MEMORY WALL (Masonry) */
+.masonry-grid {
+    column-count: 4;
+    column-gap: 15px;
+    width: 100%;
+    max-width: 1400px;
+    padding: 20px;
     position: relative;
     z-index: 2;
 }
 
-h1.movie-title {
-    font-family: var(--font-head);
-    font-size: 5rem;
-    margin: 0;
-    letter-spacing: 5px;
-    text-shadow: 0 0 10px rgba(255, 127, 80, 0.5); /* Coral Glow */
+@media (max-width: 1024px) {
+    .masonry-grid {
+        column-count: 3;
+    }
 }
 
-.highlight {
-    color: var(--coral);
+@media (max-width: 768px) {
+    .masonry-grid {
+        column-count: 2;
+    }
 }
 
-/* BUTTONS */
-.btn-primary, #yesBtn {
-    background-color: var(--coral);
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    border: none;
-    cursor: pointer;
-    border-radius: 50px;
-    font-weight: bold;
-    transition: transform 0.2s;
-    margin: 10px;
+@media (max-width: 480px) {
+    .masonry-grid {
+        column-count: 1;
+    }
 }
 
-.btn-primary:hover, #yesBtn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px var(--coral);
-}
-
-#noBtn {
-    background-color: #555;
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 50px;
-    position: relative; /* Important for moving it around */
-}
-
-/* FILM STRIP GALLERY */
-.film-strip {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    padding: 20px;
-    max-width: 90%;
-    background: #000;
-    border-top: 5px solid white;
-    border-bottom: 5px solid white;
-    /* Looks like a film reel */
-}
-
-.frame img {
-    height: 300px;
+.grid-item {
+    break-inside: avoid;
+    margin-bottom: 15px;
     border-radius: 10px;
-    filter: sepia(20%); /* Vintage movie look */
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+/* Creative Coral Glow on Hover */
+.grid-item:hover {
+    transform: scale(1.03) translateY(-5px);
+    z-index: 10;
+    box-shadow: 0 0 25px rgba(255, 127, 80, 0.6), 0 0 10px rgba(255, 127, 80, 0.4);
+    border-color: var(--primary);
+}
+
+.grid-item img,
+.grid-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
     transition: filter 0.3s;
 }
 
-.frame img:hover {
-    filter: sepia(0%);
-    transform: scale(1.05);
+.grid-item:hover img,
+.grid-item:hover video {
+    filter: brightness(1.1);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-top: -30px;
+    margin-bottom: 40px;
+    font-family: var(--font-script);
+    color: var(--primary);
+    text-shadow: 0 0 5px rgba(212, 163, 115, 0.3);
+}
+
+/* FLOATING HEARTS ANIMATION */
+.hearts-container {
+    position: fixed;
+    /* Fix to screen for global effect */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    /* Behind main content */
+}
+
+.heart-anim {
+    position: absolute;
+    bottom: -20px;
+    color: var(--accent);
+    opacity: 0;
+    animation: floatHeart 6s linear infinite;
+    font-size: 1.5rem;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.chapter-card {
+    width: 300px;
+    height: 450px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chapter-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    border-color: var(--primary);
+}
+
+.card-image {
+    width: 100%;
+    height: 65%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+.chapter-card:hover .card-image {
+    transform: scale(1.1);
+}
+
+.card-content {
+    padding: 20px;
+    text-align: left;
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(to top, #000 0%, transparent 100%);
+}
+
+.card-content h3 {
+    font-family: var(--font-title);
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.card-content h4 {
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0;
+    line-height: 1.4;
+}
+
+
+
+.grid-item img,
+.grid-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-top: -30px;
+    margin-bottom: 40px;
+    font-family: var(--font-script);
+    color: #ccc;
+}
+
+/* PROPOSAL SECTION */
+#proposal {
+    min-height: 80vh;
+    /* A bit smaller to fit */
+}
+
+.big-question {
+    font-family: var(--font-title);
+    font-size: 4rem;
+    margin: 30px 0;
+    text-shadow: 0 0 20px rgba(255, 63, 63, 0.4);
+}
+
+/* BUTTONS */
+.btn-primary,
+#yesBtn {
+    background: linear-gradient(135deg, var(--accent), #ff6b6b);
+    color: white;
+    padding: 18px 40px;
+    font-size: 1.3rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(191, 63, 63, 0.4);
+}
+
+.btn-primary:hover,
+#yesBtn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 107, 107, 0.6);
+}
+
+#noBtn {
+    background-color: transparent;
+    color: #888;
+    padding: 18px 40px;
+    font-size: 1.1rem;
+    border: 2px solid #555;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#noBtn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* CHAPTERS SECTION (Horizontal Scroll) */
+.chapter-container {
+    display: flex;
+    flex-wrap: nowrap;
+    /* Horizontal scroll */
+    overflow-x: auto;
+    gap: 30px;
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 50px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    /* Firefox */
+    scrollbar-color: var(--primary) transparent;
+}
+
+.chapter-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.chapter-container::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+/* FLIP CARD STYLES */
+.chapter-card {
+    flex: 0 0 300px;
+    /* Fixed width for horizontal items */
+    scroll-snap-align: center;
+    width: 300px;
+    height: 450px;
+    background-color: transparent;
+    perspective: 1000px;
+    /* Remove 3D effect from container */
+    border: none;
+    /* Remove border from container */
+    overflow: visible;
+    /* Allow 3D rotation */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.chapter-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Style the front side */
+.flip-card-front {
+    background: var(--card-bg);
+    color: white;
+}
+
+/* Style the back side */
+.flip-card-back {
+    background: linear-gradient(135deg, var(--accent), #ff6b6b);
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.flip-card-back h3 {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.flip-card-back p {
+    font-family: var(--font-script);
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+
+/* GLOBAL EFFECTS */
+.signature {
+    font-family: var(--font-script);
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-top: -20px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(212, 163, 115, 0.5);
+    transform: rotate(-5deg);
+}
+
+
+
+/* PROPOSAL DAY SECTION */
+#proposal-day {
+    padding: 60px 20px;
+    background: radial-gradient(circle at center, #2a1a1a, #000);
+}
+
+.polaroid-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.polaroid-card {
+    background: #fff;
+    padding: 15px 15px 50px 15px;
+    /* Extra bottom padding for Polaroid look */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transform-origin: center;
+    transition: transform 0.4s ease;
+    width: 280px;
+}
+
+.inner-polaroid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: sepia(20%);
+    /* Vintage feel */
+}
+
+.handwritten-date {
+    font-family: var(--font-script);
+    color: #333;
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+.rotate-left {
+    transform: rotate(-5deg);
+}
+
+.rotate-right {
+    transform: rotate(5deg);
+}
+
+.center-card {
+    transform: rotate(0deg) scale(1.1);
+    z-index: 2;
+}
+
+transform: scale(1.2) rotate(0deg) !important;
+z-index: 10;
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Vertical Stack Card (Two Photos in one frame) */
+.vertical-stack-card {
+    height: auto;
+    /* Allow auto height */
+    padding-bottom: 60px;
+    /* Space for caption */
+}
+
+.vertical-stack-card .inner-polaroid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* SPANDAN SECTION - Polaroid Layout */
+#spandan {
+    background: radial-gradient(circle at center, #2a0a0a, #000);
+    padding: 60px 20px;
+    /* Use flex wrap for collage feel */
 }
