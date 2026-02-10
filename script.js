@@ -79,3 +79,22 @@ function acceptLove() {
         });
     }, 1000);
 }
+
+// LETTER POPUP FUNCTIONALITY
+function openLetter() {
+    const modal = document.getElementById("loveLetterModal");
+    modal.style.display = "flex";
+}
+
+function closeLetter() {
+    const modal = document.getElementById("loveLetterModal");
+    modal.style.display = "none";
+}
+
+// Close modal if user clicks outside
+window.onclick = function (event) {
+    const modal = document.getElementById("loveLetterModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
